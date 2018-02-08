@@ -1,5 +1,7 @@
 package silalahi.valentinus.oop;
 
+import java.math.BigDecimal;
+
 /**
  * Project 	: java-oop 
  * User		: valentinus silalahi 
@@ -31,6 +33,10 @@ public class PembelianDetail {
 	}
 	public void setJumlah(Integer jumlah) {
 		this.jumlah = jumlah;
+	}
+	
+	public BigDecimal hitungSubTotal(){
+		return produk.getHarga().multiply(new BigDecimal(jumlah));
 	}
 	
 }
