@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import silalahi.valentinus.oop.dao.Diskon;
+import silalahi.valentinus.oop.dao.Pajak;
+import silalahi.valentinus.oop.dao.Pembayaran;
 
 /**
  * Project 	: java-oop 
@@ -19,6 +21,8 @@ public class Pembelian {
 	
 	private String nota;
 	private Date waktuTransaksi;
+	private Pembayaran pembayaran;
+	private Pengiriman pengiriman;
 	
 	public String getNota() {
 		return nota;
@@ -35,6 +39,7 @@ public class Pembelian {
 	
 	private List<Diskon> daftarDiskon = new ArrayList<Diskon>();
 	private List<PembelianDetail> daftarPembelianDetail = new ArrayList<PembelianDetail>();
+	private List<Pajak> daftarPajak = new ArrayList<Pajak>();
 	
 	public BigDecimal hitungTotalDiskon(){
 		BigDecimal hasil = BigDecimal.ZERO;
@@ -63,7 +68,23 @@ public class Pembelian {
 	public void setDaftarPembelianDetail(List<PembelianDetail> daftarPembelianDetail) {
 		this.daftarPembelianDetail = daftarPembelianDetail;
 	}
-	
-	
+	public List<Pajak> getDaftarPajak() {
+		return daftarPajak;
+	}
+	public void setDaftarPajak(List<Pajak> daftarPajak) {
+		this.daftarPajak = daftarPajak;
+	}
+	public Pembayaran getPembayaran() {
+		return pembayaran;
+	}
+	public void setPembayaran(Pembayaran pembayaran) {
+		this.pembayaran = pembayaran;
+	}
+	public Pengiriman getPengiriman() {
+		return pengiriman;
+	}
+	public void setPengiriman(Pengiriman pengiriman) {
+		this.pengiriman = pengiriman;
+	}
 	
 }
