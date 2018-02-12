@@ -2,11 +2,21 @@ package com.silalahi.valentinus.hibernate.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  * Project : java-hibernate 
@@ -24,10 +34,39 @@ public class Pinjaman implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
+	@ManyToOne 
+	@JoinColumn(name="id_peminjam", nullable=false)
 	private Karyawan peminjam;
+	
+	@OneToOne 
+	@JoinColumn(name="id_persetujuan", nullable=false)
 	private Persetujuan persetujuan;
+	
+	@Column(nullable=false)
 	private BigDecimal nilai;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="status_pinjaman", nullable=false)
 	private StatusPeminjaman statusPeminjaman = StatusPeminjaman.DISETUJUI;
+	
+	@OneToMany(mappedBy="pinjaman", cascade=CascadeType.ALL, orphanRemoval=true)
+	private List<Pembayaran> daftarPembayaran = new ArrayList<Pembayaran>();
+	
+	@OneToMany(mappedBy="pinjaman", cascade=CascadeType.ALL, orphanRemoval=true)
+	private List<Pencairan> daftarPencairan = new ArrayList<Pencairan>(); 
+	
+	public List<Pembayaran> getDaftarPembayaran() {
+		return daftarPembayaran;
+	}
+	public void setDaftarPembayaran(List<Pembayaran> daftarPembayaran) {
+		this.daftarPembayaran = daftarPembayaran;
+	}
+	public List<Pencairan> getDaftarPencairan() {
+		return daftarPencairan;
+	}
+	public void setDaftarPencairan(List<Pencairan> daftarPencairan) {
+		this.daftarPencairan = daftarPencairan;
+	}
 	
 	public Long getId() {
 		return id;
