@@ -44,7 +44,7 @@ public class AplikasiKasbonServiceImpl implements AplikasiKasbonService {
 		if(start == null || start < 0) start = 0;
 		if(rows == null || rows < 0) rows = 20;
 		return sessionFactory.getCurrentSession()
-				.createQuery("select k from Karyawan order by k.nip")
+				.createQuery("select k from Karyawan k order by k.nip")
 				.setFirstResult(start)
 				.setMaxResults(rows)
 				.list();
@@ -53,12 +53,13 @@ public class AplikasiKasbonServiceImpl implements AplikasiKasbonService {
 	@Override
 	public Long countAllKaryawan() {
 		return (Long) sessionFactory.getCurrentSession()
-				.createQuery("select count(k) from Karyawan")
+				.createQuery("select count(k) from Karyawan k ")
 				.uniqueResult();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional(readOnly=true)
 	public List<Karyawan> findKaryawanByNama(String nama) {
 		return sessionFactory.getCurrentSession()
 				.createQuery("select k from Karyawan "
@@ -69,9 +70,10 @@ public class AplikasiKasbonServiceImpl implements AplikasiKasbonService {
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public Karyawan findKaryawanByNip(String nip) {
 		return (Karyawan) sessionFactory.getCurrentSession()
-				.createQuery("select k from Karyawan "
+				.createQuery("select k from Karyawan k"
 						+ "where k.nip = :nip "
 						+ "order by k.nip")
 				.setString("nip", "%"+nip+"%")
