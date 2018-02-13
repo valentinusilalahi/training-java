@@ -1,4 +1,4 @@
-# Dependecy Injection atau Inversion of Control menggunakan Spring Framwork #
+## Dependecy Injection atau Inversion of Control menggunakan Spring Framwork ##
 
 ### Contoh Code menggunakan Java ###
 
@@ -114,4 +114,4 @@ Semoga penjelasan Dependency injection yang disertai contoh-code ini cukup jelas
 
 ### Referensi ###
 
-* [spring framework docs](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-introduction)
+* [spring framework docs-IoC](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-introduction)
