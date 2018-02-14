@@ -8,14 +8,14 @@
 ```java
 public class Person{
 	
-	public String nama;						// contoh instance-variable
+	public String nama; // contoh instance-variable
 	
 	public static void main(String[] xxx){
-		Person p;							// local-variable/reference-variable p;
-		p = new Person();					// object Person di-instansiasi
+		Person p; // local-variable/reference-variable p;
+		p = new Person(); // object Person di-instansiasi
 		p.setNama("valentinus")
 		
-		Person copy = p;					// local-variable yang menunjuk ke-object yang sama
+		Person copy = p; // local-variable yang menunjuk ke-object yang sama
 		copy.setNama("silalahi");
 	}
 	
@@ -23,13 +23,13 @@ public class Person{
 		return nama;
 	}
 	
-	public void setNama(String nama){		// contoh local-variable nama
+	public void setNama(String nama){ // contoh local-variable nama
 		this.nama = nama;
 	}
 }
 ```
 
-__variable java dibagi menjadi 3__** :
+__variable java dibagi menjadi 3__ :
 1. variable lokal adalah variable yang ada di dalam method, hanya hidup ketika method di eksekusi; jika program keluar method maka variable akan diserahkan ke `gerbage-collector` untuk dibersihkan
 2. variable static adalah variable yang tidak bisa di ubah lagi value nya
 3. variable instance (non-static) adalah variable yang menunjuk ke si-object
@@ -49,9 +49,9 @@ public class PassByValue{
 
 	public static void main(String[] xxx){
 	String nama = "silalahi";
-		System.out.println("nama lama: " + nama);			// output : nama lama: silalahi
-		ubahNama(nama);										// output : nama baru: valentinus
-		System.out.println("nama lama: " + nama);			// output : nama lama: silalahi
+		System.out.println("nama lama: " + nama);// output : nama lama: silalahi
+		ubahNama(nama);// output : nama baru: valentinus
+		System.out.println("nama lama: " + nama);// output : nama lama: silalahi
 	}
 	
 }
@@ -72,9 +72,9 @@ public class PassByReference{
 		String[] nama = new String[1];
 		nama[0] = "silalahi";
 		
-		System.out.println("nilai lama: " + nama[0]);	// output : nilai lama: silalahi
-		ubahNama(nama);									// output : nama baru: valentinus
-		System.out.println("nilai lama: " + nama[0]);	// output : nilai lama: valentinus
+		System.out.println("nilai lama: " + nama[0]);// output : nilai lama: silalahi
+		ubahNama(nama);// output : nama baru: valentinus
+		System.out.println("nilai lama: " + nama[0]);// output : nilai lama: valentinus
 	}
 	
 }
@@ -88,6 +88,8 @@ Gerbage Collector berjalan/dikontrol sepenuhnya oleh JVM. Hanya JVM yang bisa me
 
 Defenisi dari "object yang tidak dibutuhkan/digunakan lagi?" itu maksudnya adalah jika suatu object tidak dapat lagi diakses oleh `thread` yang masih hidup, maka bisa dipastikan bahwa object tersebut tidak bisa lagi digunakan. object dalam keadaan seperti itulah yang akan dihapus GC dari dalam `heap`
 
+Semoga penjelasan java fundamental ini cukup jelas. Terima kasih :D
+
 ### Referensi ###
 
-* [JavaSE Documentation] https://docs.oracle.com/javase/tutorial/getStarted/index.html)
+* [JavaSE Documentation](https://docs.oracle.com/javase/tutorial/getStarted/index.html)
